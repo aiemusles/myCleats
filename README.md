@@ -1,4 +1,4 @@
-Tautan PWS: https://marco-imanuel-mycleats.pbp.cs.ui.ac.id/
+Tautan aplikasi PWS: https://marco-imanuel-mycleats.pbp.cs.ui.ac.id/
 Repo github: https://github.com/aiemusles/mycleats.git
 
 # Soal esai tugas 2
