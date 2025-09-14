@@ -6,3 +6,36 @@
 <p>{{ name }}<p>
 <h5>Class: </h5>
 <p>{{ class }}</p>
+
+<a href="{% url 'main:add_cleats' %}">
+<button>+ Add Product</button>
+</a>
+
+<hr>
+
+{% if not cleats_list %}
+<p>Belum ada produk di myCleats.</p>
+{% else %}
+
+{% for cleats in cleats_list %}
+<div>
+  <h2><a href="{% url 'main:show_cleats' cleats.id %}">{{ cleats.name }}</a></h2>
+
+  <p><b>{{ cleats.get_category_display }}</b>{% if cleats.is_featured %} | 
+    <b>Featured</b>{% endif %}| <b>{{ cleats.name|truncatewords:25 }}...</b>
+    | Stock: {{ cleats.stock }} | Rating: {{cleats.rating}}</p>
+
+  {% if cleats.thumbnail %}
+  <img src="{{ cleats.thumbnail }}" alt="thumbnail" width="150" height="100">
+  <br />
+  {% endif %}
+
+  <p>Price: {{ cleats.price }}</p>
+
+  <p><a href="{% url 'main:show_cleats' cleats.id %}"><button>Read More</button></a></p>
+</div>
+
+<hr>
+{% endfor %}
+
+{% endif %}
