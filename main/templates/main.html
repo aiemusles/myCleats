@@ -7,32 +7,32 @@
 <h5>Class: </h5>
 <p>{{ class }}</p>
 
-<a href="{% url 'main:add_cleats' %}">
+<a href="{% url 'main:add_product' %}">
 <button>+ Add Product</button>
 </a>
 
 <hr>
 
-{% if not cleats_list %}
+{% if not product_list %}
 <p>Belum ada produk di myCleats.</p>
 {% else %}
 
-{% for cleats in cleats_list %}
+{% for product in product_list %}
 <div>
-  <h2><a href="{% url 'main:show_cleats' cleats.id %}">{{ cleats.name }}</a></h2>
+  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
 
-  <p><b>{{ cleats.get_category_display }}</b>{% if cleats.is_featured %} | 
-    <b>Featured</b>{% endif %}| <b>{{ cleats.name|truncatewords:25 }}...</b>
-    | Stock: {{ cleats.stock }} | Rating: {{cleats.rating}}</p>
+  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
+    <b>Featured</b>{% endif %}| <b>{{ product.name|truncatewords:25 }}...</b>
+    | Stock: {{ product.stock }} | Rating: {{product.rating}}</p>
 
-  {% if cleats.thumbnail %}
-  <img src="{{ cleats.thumbnail }}" alt="thumbnail" width="150" height="100">
+  {% if product.thumbnail %}
+  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
   <br />
   {% endif %}
 
-  <p>Price: {{ cleats.price }}</p>
+  <p>Price: {{ product.price }}</p>
 
-  <p><a href="{% url 'main:show_cleats' cleats.id %}"><button>Read More</button></a></p>
+  <p><a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a></p>
 </div>
 
 <hr>

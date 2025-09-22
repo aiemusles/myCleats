@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 
 # Model disini
-class Cleats(models.Model):
+class Product(models.Model):
     SURFACE_TYPES = [
         ('FG', 'Firm Ground'), 
         ('AG', 'Artificial Grass'),

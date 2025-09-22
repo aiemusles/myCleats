@@ -1,9 +1,9 @@
 from django.forms import ModelForm
-from main.models import Cleats
+from main.models import Product
 
-class CleatsForm(ModelForm):
+class ProductForm(ModelForm):
     class Meta:
-        model = Cleats
+        model = Product
         fields = [
             "name", "brand", "size", "price", "stock", "description", "thumbnail", 
             "category", "is_featured"
