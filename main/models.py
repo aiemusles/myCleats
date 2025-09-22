@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
 # Model disini
 class Product(models.Model):
@@ -10,13 +11,14 @@ class Product(models.Model):
         ('turf', 'Turf'),
         ('indoor', 'Indoor')
     ]
+    user =  models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255) #Nama yang terlalu panjang akan diberi keterangan di deskripsi
     brand = models.CharField(max_length=70)
-    size = models.IntegerField(default=0)
-    price = models.IntegerField(default=0)
-    stock = models.IntegerField(default=0)
+    size = models.PositiveIntegerField(default=0)
+    price = models.PositiveIntegerField(default=0)
+    stock = models.PositiveIntegerField(default=0)
     rating = models.FloatField(default=0.0) #Rating dimulai dari 0 dulu
     description = models.TextField()
     thumbnail = models.URLField(blank=True, null=True)
