@@ -1,0 +1,68 @@
+{% load static %}
+<article class="bg-white rounded-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+  
+  <!-- Thumbnail -->
+  <div class="aspect-[4/3] relative overflow-hidden">
+    {% if product.thumbnail %}
+      <img src="{{ product.thumbnail }}" alt="{{ product.name }}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+    {% else %}
+      <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+        No Image
+      </div>
+    {% endif %}
+
+    <!-- Category Badge (Football Shoe) -->
+    <div class="absolute top-3 left-3">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-700 text-white shadow-md">
+        ⚽ {{ product.get_category_display }}
+      </span>
+    </div>
+
+    <!-- Status Badge -->
+    <div class="absolute top-3 right-3 flex space-x-2">
+      {% if product.is_featured %}
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-yellow-300 text-yellow-900 shadow">
+          ⭐ Featured
+        </span>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col h-full bg-green-50 p-6">
+    <!-- Shoe Name -->
+    <h3 class="text-xl font-bold text-gray-900 mb-2 leading-snug">
+      <a href="{% url 'main:show_product' product.id %}" class="hover:text-green-700 transition-colors">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <!-- Short Description -->
+    <p class="text-gray-700 text-sm leading-relaxed line-clamp-3 mb-4">
+      {{ product.description|truncatewords:25 }}
+    </p>
+
+    <!-- Action Buttons -->
+    {% if user.is_authenticated and product.user == user %}
+      <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+        <a href="{% url 'main:show_product' product.id %}" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700 transition">
+          View Details
+        </a>
+        <div class="flex space-x-3">
+          <a href="{% url 'main:edit_product' product.id %}" class="text-gray-600 hover:text-gray-900 text-sm font-medium">
+            ✏️ Edit
+          </a>
+          <a href="{% url 'main:delete_product' product.id %}" class="text-red-600 hover:text-red-800 text-sm font-medium">
+            🗑️ Delete
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <div class="pt-4 border-t border-gray-200">
+        <a href="{% url 'main:show_product' product.id %}" class="inline-flex items-center font-semibold text-green-600 hover:text-green-700 text-sm">
+          View Details →
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</article>
