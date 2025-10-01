@@ -100,4 +100,39 @@ Langkah-langkahnya sebagai berikut:
     g.  Terkahir, melakukan deployment ke pws terhadap proyek yang sudah dibuat.
 
 
+# Soal esai tugas 5
+### 1.  Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+Urutan prioritas (specificity) dimulai dari deklarasi yang diberi !important, diikuti inline style (style="..."), selector dengan ID, selector kelas/atribut/pseudo-class, lalu selector elemen dan pseudo-elemen. Jika tingkat specificity sama, aturan yang muncul paling akhir di stylesheet yang sama yang dipakai.
+
+### 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+Responsive design memastikan tampilan nyaman di berbagai ukuran layar sehingga UX konsisten dan aksesibilitas meningkat. Misalnya, halaman utama Tokopedia sudah responsif: grid produk berubah dari banyak kolom di desktop menjadi satu kolom di ponsel sehingga mudah dinavigasi. Sebaliknya, beberapa portal akademik lama seperti SIAKAD versi klasik tidak responsif karena layout fix-width yang memaksa pengguna mobile melakukan zoom manual, menyebabkan interaksi sulit dan potensi salah input tinggi.
+
+### 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+Margin adalah ruang di luar kotak elemen untuk memberi jarak antar elemen; border adalah garis yang mengelilingi kotak elemen; padding adalah ruang antara konten dan border. Implementasinya dengan properti CSS `margin`, `border`, dan `padding`, misalnya:
+```css
+.card {
+    margin: 1rem;
+    border: 1px solid #cbd5f5;
+    padding: 1.5rem;
+}
+```
+Properti tersebut juga bisa menggunakan notasi shorthand (top-right-bottom-left) atau bernilai spesifik per sisi (margin-top, padding-inline, dan sebagainya).
+
+### 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+- Flexbox adalah modul layout satu dimensi untuk menyusun elemen secara horizontal atau vertikal dengan mudah (align, justify, order). Cocok untuk bar navigasi, card list, atau mendistribusikan ruang di dalam satu baris/kolom. 
+- Grid layout adalah modul dua dimensi yang memungkinkan kontrol baris dan kolom sekaligus, cocok untuk dashboard atau galeri karena setiap cell dapat diatur ukurannya dan posisinya secara eksplisit. Keduanya sering dikombinasikan: grid untuk kerangka besar, flexbox untuk isi tiap cell.
+
+### 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Langkah-langkahnya sebagai berikut:
+    a. Membuat fungsi di views.py dan template html yang bersangkutan untuk meng-edit dan menghapus aplikasi, serta khusus untuk fitur edit, template html barunya sendiri.
+    b. Menghubungkan fungsi-fungsi tersebut ke tombol yang dibuat di main.html dan menambahkan routing url yang sesuai.
+    c. Menambahkan template untuk navbar.
+    d. Mengonfigurasi pengatura static files di settings.py.
+    e. Menambahkan tailwind di base.html folder templates (terletak di root folder).
+    f. Menambahkan global.css dan no-product.png di folder static (terletak di root folder) untuk file static yang akan digunakan di template yang dimodif di tahap h.
+    g. Membuat template baru untuk card suatu produk. Pada card tersebut, ditambahkan tombol edit dan hapus produk sesuai dengan fungsi view yang didefinisikan di tahap a.
+    h. Memodifikasi semua template yang relevan agar menggunakan css, card, dan memanfaatkan static file yang terlampir di folder static.
+
+
+
 
