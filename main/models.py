@@ -32,3 +32,7 @@ class Product(models.Model):
     #NOTE: seharusnya ada method buat tambah stok atau ubah rating diluar form, tapi untuk
     #      sementara keknya g dl
     
+class Car(models.Model):
+    name = models.CharField(max_length=255) 
+    brand = models.CharField(max_length=255) 
+    stock = models.PositiveIntegerField(default=0)
