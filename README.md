@@ -134,5 +134,21 @@ Langkah-langkahnya sebagai berikut:
     h. Memodifikasi semua template yang relevan agar menggunakan css, card, dan memanfaatkan static file yang terlampir di folder static.
 
 
+# Soal esai tugas 6
+### 1.  Apa perbedaan antara synchronous request dan asynchronous request?
+Sebuah synchronous request memblokir aktivitas klien hingga operasi selesai; pengguna harus menunggu ketika halaman baru ditampilkan atau operasi dilakukan. Berbeda dengan asynchronous request yang tidak memblokir aktivitas klien, sehingga pengguna dapat terus berinteraksi dengan halaman sementara data sedang dimuat.
+
+### 2. Bagaimana AJAX bekerja di Django (alur request–response)?
+Event dikirim melalui dengan AJAX di HttpRequest -> Django menerima HttpRequest sesuai pola url di urls.py dan mengalihkannya ke fungsi view yang sesuai -> perintah AJAX diproses dan respons dikembalikan dalam bentuk JsonResponse oleh fungsi view -> JavaScript di browser menerima response tadi (biasanya dengan API fetch()) dan informasi di website akan diupdate sesuai dengan respons tersebut.
+
+### 3. Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+Keuntungan dalam menggunakan AJAX dibandingkan render biasa di Django adalah memungkinkan request dilakukan secara asynchronous ketimbang secara sinkronus dengan render default-nya Django. Hal ini tidak hanya meningkatkan pengalaman pengguna (UX) karena tidak ada jeda atau flicker antar reload pemuatan ulang seluruh halaman, tetapi juga meningkatkan kecepatan, responsivitas, dan menekan konsumsi data dan sumber daya komputasi yang digunakan oleh suatu proyek Django karena karena hanya data (JSON) yang dikirim.
+
+### 4. Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+Untuk memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django, dapat dilakukan sanitasi data di sisi backend sebelum menyimpannya ke database dengan fungsi strip_tags untuk menghapus semua tag HTML dari teks, sehingga data yang dikirim dengan AJAX tidak mengandung informasi sensitif mengenai dari mana asal elemen HTML mereka dikirim. Selain itu, kita juga dapat membersihkan data sensitif yang dikirim AJAX secara manual dari database dengan library JavaScript DOMPurify.
+
+### 5.  Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+Berkaitan dengan no. 3, dengan penggunaan AJAX, setiap pengguna melakukan suatu request atau respons tidak akan ada jeda atau flicker antar reload pemuatan ulang seluruh halaman. Pengguna tidak harus menunggu operasi yang dilakukan selesai agar bisa berinteraksi dengan website lagi. Hal ini akan meningkatkan pengalaman pengguna terhadap website.  
+
 
 
